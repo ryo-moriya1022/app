@@ -1,40 +1,20 @@
-import schedule as sc
-from time import sleep
+import datetime
 import streamlit as st
-from zoom_kido import zoom_ki
-def data_zoom(urls,youbi,time):
-    if youbi=="日曜日":
-        sc.every().sunday.at(time).do(zoom_ki,urls)
+from time import sleep
+import webbrowser
+import streamlit as st 
+def webopen(urls):
+    webbrowser.open(urls)
+def times(dt :datetime.datetime,urls):
+    now_dt = datetime.datetime.now().replace(second=0)
+    if dt < now_dt:
+        st.stop()
+    else:
         while True:
-            sc.run_pending()
-            sleep(59)
-    if youbi=="月曜日":
-        sc.every().monday.at(time).do(zoom_ki,urls)
-        while True:
-            sc.run_pending()
-            sleep(59)
-    if youbi=="火曜日":
-        sc.every().tuesday.at(time).do(zoom_ki,urls)
-        while True:
-            sc.run_pending()
-            sleep(59)
-    if youbi=="水曜日":
-        sc.every().wednesday.at(time).do(zoom_ki,urls)
-        while True:
-            sc.run_pending()
-            sleep(59)
-    if youbi=="木曜日":
-        sc.every().thursday.at(time).do(zoom_ki,urls)
-        while True:
-            sc.run_pending()
-            sleep(59)
-    if youbi=="金曜日":
-        sc.every().friday.at(time).do(zoom_ki,urls)
-        while True:
-            sc.run_pending()
-            sleep(59)
-    if youbi=="土曜日":
-        sc.every().saturday.at(time).do(zoom_ki,urls)
-        while True:
-            sc.run_pending()
-            sleep(59)
+            now_dt = datetime.datetime.now().replace(second=0)
+            print("1 =", now_dt)
+            print("2 =", dt)
+            if abs((now_dt - dt).total_seconds()) < 1:
+                webopen(urls)
+                break
+            sleep(1)
