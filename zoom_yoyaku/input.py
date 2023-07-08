@@ -6,14 +6,12 @@ import streamlit as st
 def webopen(urls):
     webbrowser.open(urls)
 def times(dt :datetime.datetime,urls):
-    now_dt = datetime.datetime.now().replace(second=0)
+    now_dt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).replace(second=0)
     if dt < now_dt:
         st.stop()
     else:
         while True:
             now_dt = datetime.datetime.now().replace(second=0)
-            st.write(now_dt)
-            st.write(dt)
             if abs((now_dt - dt).total_seconds()) < 1:
                 webopen(urls)
                 break
