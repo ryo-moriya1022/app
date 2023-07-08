@@ -14,7 +14,10 @@ def check(date_dt:dt.datetime,time_dt:dt.datetime):
     try:
         datetime_combined = dt.datetime.combine(date_dt, time_dt)
         st.write("入力された時刻は",datetime_combined)
-        if datetime_combined<dt.datetime.today():
+        
+        dfr=dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+        st.write("今の時刻は",dfr)
+        if datetime_combined<dfr:
             st.error("過去の予約はできません")
         return datetime_combined
     except TypeError:
