@@ -1,6 +1,6 @@
 import streamlit as st
 import datetime as dt
-from app.zoom_yoyaku.input import times
+from input import times
 st.set_page_config(
     page_title="URL自動実行システム",
     layout="wide", 
