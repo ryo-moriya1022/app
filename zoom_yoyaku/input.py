@@ -17,4 +17,4 @@ def times(dt :datetime.datetime,urls):
             if abs((now_dt - dt).total_seconds()) < 1:
                 webopen(urls)
                 break
-            sleep(1）
+            sleep(1)
