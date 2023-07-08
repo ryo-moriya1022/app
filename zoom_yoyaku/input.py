@@ -12,8 +12,8 @@ def times(dt :datetime.datetime,urls):
     else:
         while True:
             now_dt = datetime.datetime.now().replace(second=0)
-            st.write("1 =", now_dt)
-            st.write("2 =", dt)
+            st.write(now_dt)
+            st.write(dt)
             if abs((now_dt - dt).total_seconds()) < 1:
                 webopen(urls)
                 break
