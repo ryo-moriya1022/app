@@ -11,16 +11,12 @@ def chenge_to_dt(input_time, now_year, now_month, now_day):
     dt_input_time=dt.datetime.strptime(
         dt_input_time,"%Y-%m-%d-%H:%M"
         )
-    dt_input_time=dt_input_time.replace(
-        tzinfo=dt.timezone(dt.timedelta(hours=9))
-        )
+    dt_input_time=dt_input_time+dt.timedelta(hours=9)
     return dt_input_time
 # now time get 
 now_time=dt.datetime.now()
 # chenge now time to timezone(japan)
-now_time_datezone=now_time.replace(
-    tzinfo=dt.timezone(dt.timedelta(hours=9))
-    )
+now_time_datezone=now_time+dt.timedelta(hours=9)
 # concat input time to year and day and month
 now_year=now_time.year
 now_month=now_time.month

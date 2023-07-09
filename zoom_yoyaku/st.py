@@ -12,15 +12,14 @@ st.set_page_config(
 )
 def check(date_dt:dt.datetime,time_dt:dt.datetime):
     try:
-        datetime_combined = dt.datetime.combine(date_dt, time_dt)  
+        datetime_combined = dt.datetime.combine(date_dt, time_dt)
         st.write("入力された時刻は",datetime_combined)
-        dfr=dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
-        st.write("今の時刻は",dfr)
-        if datetime_combined<dfr:
+        if datetime_combined<dt.datetime.today():
             st.error("過去の予約はできません")
         return datetime_combined
     except TypeError:
         pass
+next_week=dt.date.today()
 st.write("")
 st.title("URL自動実行システム")
 st.header("概要")
@@ -29,21 +28,20 @@ st.header("URLの入力 曜日 時間の入力")
 urls=st.text_input("URL",key="urls")
 st.date_input(
     'Input date',
-    min_value=dt.datetime.now(),
-    max_value=dt.datetime.now()+dt.timedelta(days=14),
-    value=dt.datetime.now(),
+    min_value=dt.date.today(),
+    max_value=dt.date.today()+dt.timedelta(days=14),
+    value=dt.date.today(),
     key="date"
 )
 st.text_input(
     'times',
     value=
-    str(dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).hour)+":"+str(dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).minute),
+    str(dt.datetime.now().hour)+":"+str(dt.datetime.now().minute),
     key="times"
 )
 time_str = st.session_state["times"]
-time_dt = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+time_dt = dt.datetime.today()
 try:
-    time_dt=time_dt.replace(tzinfo=dt.timezone(dt.timedelta(hours=9)))
     time_dt=dt.datetime.strptime(time_str, "%H:%M").time()
 except ValueError:
     st.error("入力にエラーがあります。正しい形式は%H:%Mです")
