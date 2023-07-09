@@ -12,9 +12,8 @@ st.set_page_config(
 )
 def check(date_dt:dt.datetime,time_dt:dt.datetime):
     try:
-        datetime_combined = dt.datetime.combine(date_dt, time_dt)
+        datetime_combined = dt.datetime.combine(date_dt, time_dt)  
         st.write("入力された時刻は",datetime_combined)
-        
         dfr=dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
         st.write("今の時刻は",dfr)
         if datetime_combined<dfr:
@@ -44,6 +43,7 @@ st.text_input(
 time_str = st.session_state["times"]
 time_dt = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
 try:
+    time_dt=time_dt.replace(tzinfo=dt.timezone(dt.timedelta(hours=9)))
     time_dt=dt.datetime.strptime(time_str, "%H:%M").time()
 except ValueError:
     st.error("入力にエラーがあります。正しい形式は%H:%Mです")
