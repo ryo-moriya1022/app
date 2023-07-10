@@ -3,8 +3,6 @@ import streamlit as st
 from time import sleep
 import webbrowser
 import streamlit as st 
-def webopen(urls):
-    webbrowser.open(urls)
 def times(input_dt :dt.datetime,urls):
     now_dt=dt.datetime.now()+dt.timedelta(hours=9)
     if input_dt < now_dt:
@@ -14,6 +12,6 @@ def times(input_dt :dt.datetime,urls):
             now_dt = dt.datetime.now()+dt.timedelta(hours=9)
             if abs((now_dt - input_dt).total_seconds()) < 1:
                 st.write(urls)
-                webopen(urls)
+                webbrowser.open(urls)
                 break
             sleep(1)
