@@ -13,6 +13,7 @@ def times(input_dt :dt.datetime,urls):
         while True:
             now_dt = dt.datetime.now()+dt.timedelta(hours=9)
             if abs((now_dt - input_dt).total_seconds()) < 1:
+                st.write("zikko")
                 webopen(urls)
                 break
             sleep(1)
