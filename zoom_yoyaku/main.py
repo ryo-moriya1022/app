@@ -52,7 +52,6 @@ def main():
         )
     errors(dt_input_time,now_time_datezone)
     st.write(now_time_datezone,dt_input_time)
-
     st.header("予約")
     st.write("ボタンを押すことで予約ができます。")
     st.button('予約',on_click=times,args=(

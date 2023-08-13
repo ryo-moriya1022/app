@@ -1,7 +1,7 @@
-import streamlit as st
-import webbrowser as we
-def web():
-    we.open("https://www.netflix.com/jp/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse")
-st.title("test")
-st.button('予約',on_click=web)
-
+import requests, bs4
+res = requests.get('https://tonari-it.com')
+res.raise_for_status()
+soup = bs4.BeautifulSoup(res.text, "html.parser")
+elems = soup.select('#list h2')
+for elem in elems:
+    print(elem)
