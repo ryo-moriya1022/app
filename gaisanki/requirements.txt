@@ -2,4 +2,3 @@ datetime
 pandas
 requests
 fitz
-re
