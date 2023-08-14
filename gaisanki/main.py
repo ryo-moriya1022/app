@@ -13,11 +13,10 @@ st.subheader("千歳勢or他勢")
 st.radio("勢力",("千歳勢","他勢"),key="seiryoku")
 if st.session_state["seiryoku"] =="千歳勢":
     seiryoku=0
-    st.subheader("移動方法")
-    mode=st.radio("移動方法",(mode_list))
 else:
     seiryoku=1
-    mode=mode_list[3]
+st.subheader("移動方法")
+mode=st.radio("移動方法",(mode_list))
 st.subheader("家の場所")
 st.text_input("家の場所",key="start")
 st.subheader("本気を出したとき起床から準備までにかかる時間(%H:%M)")
