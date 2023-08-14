@@ -53,7 +53,7 @@ def PDF_inport():
                 if count==2:
                     return i
             i=i+1
-    filename = "gaisanki\\bustime3.pdf"
+    filename = "bustime3.pdf"
     doc = fitz.open(filename)
     page = doc.load_page(0)
     text = page.get_text()
