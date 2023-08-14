@@ -28,9 +28,9 @@ def URL_output(start,mode,seiryoku):
         if mode=="transit|walking":
             mode="transit"
         print(seiryoku)
-        urls=f"https://www.google.com/maps/search/{start}から南千歳駅前タクシー乗り場まで{mode}"
+        urls=f"https://www.google.com/maps/search/{start}から南千歳駅前タクシー乗り場まで"
     if seiryoku ==0:
-        urls=f"https://www.google.com/maps/search/{start}から北海道千歳市末広６丁目４−４まで{mode}"
+        urls=f"https://www.google.com/maps/search/{start}から北海道千歳市末広６丁目４−４まで"
     return urls
 def URL(start,seiryoku,mode):
     print("win")
