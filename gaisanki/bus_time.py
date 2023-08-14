@@ -53,8 +53,7 @@ def PDF_inport():
                 if count==2:
                     return i
             i=i+1
-
-    filename = r'C:\Users\eva10\OneDrive\デスクトップ\PRM\app\gaisanki\bustime3.pdf'
+    filename = r'app\gaisanki\bustime3.pdf'
     doc = fitz.open(filename)
     page = doc.load_page(0)
     text = page.get_text()
